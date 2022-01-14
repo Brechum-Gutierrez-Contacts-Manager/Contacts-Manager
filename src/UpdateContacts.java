@@ -42,17 +42,30 @@ public class UpdateContacts {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        try {
+//        try {
             // Reading Files
             // Create a List of strings that represents the file data.
 
-            List<String> contacts = Files.readAllLines(dataFile);
-            for (String contact : contacts) {
-                System.out.println(contacts);
-            }
-            System.out.println("  Name   | Phone Number\n      |           |");
-            System.out.println("-----------------------");
-            System.out.println(contacts);
+//            List<String> contacts = Files.readAllLines(dataFile);
+//            for (String contact : contacts) {
+//                System.out.println(contacts);
+//            }
+        List<String> toString = null;
+        Path ContactsPath = Paths.get("data", "contacts.txt");
+        try {
+            toString = Files.readAllLines(ContactsPath);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println("  Name   | Phone Number");
+        System.out.println("-----------------------");
+        for (int i = 0; i < toString.size(); i += 1) {
+            System.out.println(toString.get(i));
+
+        }
+
+//            System.out.println("");
+//            System.out.println(contacts);
 //public static addContact() {Scanner myScanner = new Scanner(System.in);
 //            System.out.println(" 1. Add a New Person ");
 //            System.out.print("  First Name: ");
@@ -61,8 +74,8 @@ public class UpdateContacts {
 //            String lastName = myScanner.nextLine();
 //            System.out.print("  Phone Number : ");
 //            String phoneNumber = myScanner.nextLine();
-        } catch (IOException iox) {
-            iox.printStackTrace();
-        }
+//        } catch (IOException iox) {
+//            iox.printStackTrace();
+//        }
     }
 }
