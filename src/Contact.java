@@ -13,7 +13,7 @@ public class Contact {
         this.phoneNumber = phoneNumber;
     }
     public String toString() {
-        return this.firstName + " " + this.lastName + "Phone number: " + this.phoneNumber;
+        return this.firstName + " " + this.lastName + " | " + this.phoneNumber;
     }
 
     public String getFirstName() {
