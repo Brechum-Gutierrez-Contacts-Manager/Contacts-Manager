@@ -116,9 +116,7 @@ public class UpdateContacts {
             e.printStackTrace();
         }
 
-
     }
-
 
 
         // NOTE !!! We need to create  a new class with a main menu to call this method...
