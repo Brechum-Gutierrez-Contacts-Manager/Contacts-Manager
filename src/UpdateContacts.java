@@ -53,7 +53,7 @@ public class UpdateContacts {
                 printContactList();
                 addContacts();
                 searchContacts();
-//                deleteContacts();
+                deleteContacts();
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -118,25 +118,25 @@ public class UpdateContacts {
         }
     }
 // Deleting existing Contact
-//        public static void deleteContacts(){
-//            Scanner scanner = new Scanner(System.in);
-//            System.out.println("Delete a Contact.");
-//            System.out.println("Name : ");
-//            String deleteContacts = scanner.nextLine();
-//            Path ContactsPath = Paths.get("data", "contacts.txt");
-//            List<String>ContactList;
-//            try {
-//                ContactList= Files.readAllLines(ContactsPath);
-//                for(String contact : ContactList) {
-//                    if(contact.contains((deleteContacts)))
-//                        System.out.println(deleteContacts);
-////                    }
-////                        System.out.println(contact);
-//                }
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
+        public static void deleteContacts(){
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Delete a Contact.");
+            System.out.println("Name : ");
+            String deleteContacts = scanner.nextLine();
+            Path ContactsPath = Paths.get("data", "contacts.txt");
+            List<String>ContactList;
+            try {
+                ContactList= Files.readAllLines(ContactsPath);
+                for(String contact : ContactList) {
+                    if(contact.contains((deleteContacts)))
+                        System.out.println(deleteContacts);
+//                    }
+//                        System.out.println(contact);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 
 
 
