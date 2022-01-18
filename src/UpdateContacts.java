@@ -143,6 +143,8 @@ public class UpdateContacts {
 
 
 
+
+
         // NOTE !!! We need to create  a new class with a main menu to call this method...
     // we probably need to separate actions with methods, like search, delete,add, etc... REFACTOR ABOVE CODE
     // remove the main method and create new methods.
