@@ -50,9 +50,10 @@ public class UpdateContacts {
 //                } catch (IOException e) {
 //                    e.printStackTrace();
 //                }
-                printContactList();
-                addContacts();
-                searchContacts();
+//                printContactList();
+//                addContacts();
+//                searchContacts();
+                deleteContacts();
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -96,27 +97,65 @@ public class UpdateContacts {
 
     // search contact -3
 
-    public static void searchContacts(){
+    public static void searchContacts() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Search for a Contact.");
         System.out.println("Name : ");
         String searchedContact = scanner.nextLine();
         Path ContactsPath = Paths.get("data", "contacts.txt");
-        List<String>ContactList;
+        List<String> ContactList;
         try {
             // Reading Files
             // Create a List of strings that represents the file data.
 
-          ContactList= Files.readAllLines(ContactsPath);
-            for(String contact : ContactList) {
-                if(contact.contains(searchedContact))
-                System.out.println(contact);
+            ContactList = Files.readAllLines(ContactsPath);
+            for (String contact : ContactList) {
+                if (contact.contains(searchedContact))
+                    System.out.println(contact);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
+// Deleting existing Contact
+        public static void deleteContacts(){
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Delete a Contact.");
+            System.out.println("Name : ");
+            String deleteContacts = scanner.nextLine();
+            Path ContactsPath = Paths.get("data", "contacts.txt");
+            List<String>ContactList;
+            try {
+                ContactList= Files.readAllLines(ContactsPath);
+                List<String> newList = new ArrayList<>();
+                for (String contact : ContactList) {
+                    if (contact.toLowerCase().contains(deleteContacts)) {
+                        continue; // skips over the user input
+                    }
+                    newList.add(contact); // adds remaining items
+                }
+                for (String name : newList) {
+                    System.out.println(name);
+                }
+                Files.write(Paths.get("data", "contacts.txt"), newList); // overwrites old array list and replaces with new one
+//                for(String contact : ContactList) {
+//                    if(contact.contains((deleteContacts)))
+////                        System.out.println(deleteContacts);
+//                    ContactList.remove(deleteContacts);
+//                    }
+//
+//                       System.out.println("No contact with this " + deleteContacts + " was found!");
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+
+
+
+
 
 
         // NOTE !!! We need to create  a new class with a main menu to call this method...
