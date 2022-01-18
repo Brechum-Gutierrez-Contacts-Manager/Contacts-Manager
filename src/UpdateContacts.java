@@ -50,9 +50,9 @@ public class UpdateContacts {
 //                } catch (IOException e) {
 //                    e.printStackTrace();
 //                }
-                printContactList();
-                addContacts();
-                searchContacts();
+//                printContactList();
+//                addContacts();
+//                searchContacts();
                 deleteContacts();
             }
         } catch (IOException e) {
@@ -127,12 +127,25 @@ public class UpdateContacts {
             List<String>ContactList;
             try {
                 ContactList= Files.readAllLines(ContactsPath);
-                for(String contact : ContactList) {
-                    if(contact.contains((deleteContacts)))
-                        System.out.println(deleteContacts);
-//                    }
-//                        System.out.println(contact);
+                List<String> newList = new ArrayList<>();
+                for (String contact : ContactList) {
+                    if (contact.toLowerCase().contains(deleteContacts)) {
+                        continue; // skips over the user input
+                    }
+                    newList.add(contact); // adds remaining items
                 }
+                for (String name : newList) {
+                    System.out.println(name);
+                }
+                Files.write(Paths.get("data", "contacts.txt"), newList); // overwrites old array list and replaces with new one
+//                for(String contact : ContactList) {
+//                    if(contact.contains((deleteContacts)))
+////                        System.out.println(deleteContacts);
+//                    ContactList.remove(deleteContacts);
+//                    }
+//
+//                       System.out.println("No contact with this " + deleteContacts + " was found!");
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
