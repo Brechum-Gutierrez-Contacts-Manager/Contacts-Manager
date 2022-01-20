@@ -16,6 +16,8 @@ public class Contact {
         return this.firstName + " " + this.lastName + " | " + this.phoneNumber;
     }
 
+    // not used:
+
     public String getFirstName() {
         return firstName;
     }
