@@ -43,21 +43,31 @@ public class UpdateContacts {
             if (Files.exists(dataFile)) {
 //                Files.write(dataFile, Arrays.asList(c1String, c2String, c3String, c4String));
 
-//                Path ContactsPath = Paths.get("./data/contacts.txt" ).normalize();
-//                ContactList = new ArrayList<>();
-//                try {
-//                    ContactList = Files.readAllLines(ContactsPath);
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-//                printContactList();
-//                addContacts();
-//                searchContacts();
-                deleteContacts();
+
+
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+
+        // loop to run the menu
+        while (true) {
+                    int userChoice = UpdateContacts.mainMenu();
+                    if (userChoice == 1)
+                        UpdateContacts.printContactList();
+                    else if (userChoice == 2)
+                        UpdateContacts.addContacts();
+                    else if (userChoice == 3)
+                        UpdateContacts.searchContacts();
+                    else if (userChoice == 4) {
+                        UpdateContacts.deleteContacts();
+                    } else if (userChoice == 5) {
+                        UpdateContacts.exit();
+                    } else
+                        System.out.println("Invalid input.");
+                }
+
     }
 
 //
@@ -100,7 +110,7 @@ public class UpdateContacts {
     public static void searchContacts() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Search for a Contact.");
-        System.out.println("Name : ");
+        System.out.println("Name or Number : ");
         String searchedContact = scanner.nextLine();
         Path ContactsPath = Paths.get("data", "contacts.txt");
         List<String> ContactList;
@@ -117,11 +127,11 @@ public class UpdateContacts {
             e.printStackTrace();
         }
     }
-// Deleting existing Contact
+// Deleting existing Contact -4
         public static void deleteContacts(){
             Scanner scanner = new Scanner(System.in);
-            System.out.println("Delete a Contact.");
-            System.out.println("Name : ");
+            System.out.println("4. Delete a Contact.");
+            System.out.println(" Enter Name or Number : ");
             String deleteContacts = scanner.nextLine();
             Path ContactsPath = Paths.get("data", "contacts.txt");
             List<String>ContactList;
@@ -137,30 +147,22 @@ public class UpdateContacts {
                 for (String name : newList) {
                     System.out.println(name);
                 }
-                Files.write(Paths.get("data", "contacts.txt"), newList); // overwrites old array list and replaces with new one
-//                for(String contact : ContactList) {
-//                    if(contact.contains((deleteContacts)))
-////                        System.out.println(deleteContacts);
-//                    ContactList.remove(deleteContacts);
-//                    }
-//
-//                       System.out.println("No contact with this " + deleteContacts + " was found!");
+                Files.write(Paths.get("data", "contacts.txt"), newList);
 
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
 
-
-
-
-
-
-
+        //Exit the menu
+        public static void exit() {
+            System.out.println("Goodbye");
+            System.exit(0);
+        }
 
         // NOTE !!! We need to create  a new class with a main menu to call this method...
     // we probably need to separate actions with methods, like search, delete,add, etc... REFACTOR ABOVE CODE
-    // remove the main method and create new methods.
+    //  and create new methods.
 
 
     // ask for user input
@@ -179,26 +181,5 @@ public class UpdateContacts {
         System.out.println("-----------------------------");
         return userChoice;
     }
-
-
-// this go in main to call the methonds in menu:
-
-    //while (true) {
-    //            int userChoice = UpdateContacts.mainMenu();
-    //            if (userChoice == 1)
-    //                UpdateContacts.printContactList();
-    //            else if (userChoice == 2)
-    //                UpdateContacts.addPerson();
-    //            else if (userChoice == 3)
-    //                UpdateContacts.searchLastName();
-    //            else if (userChoice == 4) {
-    //                UpdateContacts.deleteContact();
-    //            } else if (userChoice == 5) {
-    //                UpdateContacts.exit();
-    //            } else
-    //                System.out.println("Invalid input.");
-    //        }
-
-
 
 }
