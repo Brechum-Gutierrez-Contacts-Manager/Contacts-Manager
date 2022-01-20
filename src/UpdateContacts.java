@@ -120,7 +120,7 @@ public class UpdateContacts {
 
             ContactList = Files.readAllLines(ContactsPath);
             for (String contact : ContactList) {
-                if (contact.contains(searchedContact))
+                if (contact.toLowerCase().contains(searchedContact))
                     System.out.println(contact);
             }
         } catch (IOException e) {
